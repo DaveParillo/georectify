@@ -21,7 +21,7 @@ The service runs on `http://localhost:8080/process`
 The input to the API is a simple JSON object POSTed to the service endpoint:
 
 
-'''json
+```json
 {
   "file": "sample.tif",
   "valid_time": "1997-01-23T14:51:08",
@@ -29,7 +29,7 @@ The input to the API is a simple JSON object POSTed to the service endpoint:
   "transform": [530184.0, 1, 0, 3900640.0, 0, -1],
   "target_epsg": 4326
 }
-'''
+```
 
 The input file is modified in place.
 
@@ -45,7 +45,7 @@ reprojected to the designated epsg code.
 
 And when run, the following JSON object is returned:
 
-'''json
+```json
 {
   "fileName": "sample.tif",
   "metadata": {
@@ -58,5 +58,5 @@ And when run, the following JSON object is returned:
     "lower_right": [ 531148, 3899289 ]
   }
 }
-'''
+```
 
