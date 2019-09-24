@@ -13,10 +13,10 @@ docker build -t dparillo/georectify .
 
 and run with:   
 ```
-docker run --rm -it -p 8080:8080 -v $(pwd)/data:/data dparillo/georectify
+docker run --rm -it -p 8080:8199 -v $(pwd)/data:/data dparillo/georectify
 ```
 
-The service runs on `http://localhost:8080/process`
+Docker creates a temporary service on `http://localhost:8199/process`
 
 The input to the API is a simple JSON object POSTed to the service endpoint:
 
@@ -34,7 +34,8 @@ The input to the API is a simple JSON object POSTed to the service endpoint:
 The input file is modified in place.
 
 The transform inputs are the affine transform parameters in GDAL's expected order.
-These are the same values you would get if you supplied a companion world file along side an ungeoreferenced image.
+These are the same values you would get if you supplied a companion 
+[world file](https://en.wikipedia.org/wiki/World_file) along side an ungeoreferenced image.
 
 ## Optional inputs
 
