@@ -33,6 +33,9 @@ The input to the API is a simple JSON object POSTed to the service endpoint:
 
 The input file is modified in place.
 
+The transform inputs are the affine transform parameters in GDAL's expected order.
+These are the same values you would get if you supplied a companion world file along side an ungeoreferenced image.
+
 ## Optional inputs
 
 `valid_time` is optional.
