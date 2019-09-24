@@ -1,0 +1,7 @@
+{
+  "file": "sample.tif",
+  "valid_time": "1997-01-23T14:51:08",
+  "epsg": 26911,
+  "transform": [530184.0, 1, 0, 3900640.0, 0, -1],
+  "target_epsg": 4326
+}
