@@ -20,7 +20,9 @@ RUN apk update && \
     && pip3 install --no-cache --upgrade pip setuptools wheel \
     &&  if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
     && pip install cherrypy numpy \
-    && mkdir /data
+    && mkdir /data \
+    && addgroup -S appgroup \
+    && adduser --disabled-password --no-create-home --system --gecos "" appuser appgroup 
 
 COPY resources/service.py .
 COPY resources/process.py .
@@ -28,6 +30,8 @@ COPY resources/process.py .
 RUN chmod 644 *.py
 
 EXPOSE 8080
+
+USER appuser
 
 ENTRYPOINT ["python3", "service.py"]
 
