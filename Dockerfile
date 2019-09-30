@@ -33,5 +33,8 @@ EXPOSE 8080
 
 USER appuser
 
+HEALTHCHECK --interval=1m --timeout=2s \
+    CMD curl -f http://localhost:8080/ || exit 1
+
 ENTRYPOINT ["python3", "service.py"]
 
