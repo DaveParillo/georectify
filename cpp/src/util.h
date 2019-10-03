@@ -28,6 +28,5 @@ inline std::string path_cat(
     return result;
 }
 
-
 #endif
 

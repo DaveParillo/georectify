@@ -41,8 +41,12 @@ void session::loop(
               std::placeholders::_2,
               false)));
       // The remote host closed the connection
-      if(ec == http::error::end_of_stream) { break; }
-      if(ec) { return fail(ec, "read"); }
+      if(ec == http::error::end_of_stream) {
+        break;
+      }
+      if(ec) {
+        return fail(ec, "read");
+      }
 
       // Send the response
       yield handle_request(*doc_root_, std::move(req_), send_);

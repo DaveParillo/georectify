@@ -1,12 +1,11 @@
 #ifndef GEORECTIFY_HANDLER_H
 #define GEORECTIFY_HANDLER_H
 
+#include <string>
+
 #include <boost/beast/core.hpp>
 #include <boost/beast/http.hpp>
-#include <boost/config.hpp>
 #include <boost/system/error_code.hpp>
-
-#include <string>
 
 #include "util.h"
 
@@ -32,7 +31,7 @@ handle_request(
     Send&& send)
 {
     // Returns a bad request response
-    auto const bad_request =
+    const auto bad_request =
     [&req](boost::beast::string_view why)
     {
         http::response<http::string_body> res {http::status::bad_request, req.version()};
@@ -45,7 +44,7 @@ handle_request(
     };
 
     // Returns a not found response
-    auto const not_found =
+    const auto not_found =
     [&req](boost::beast::string_view target)
     {
         http::response<http::string_body> res{http::status::not_found, req.version()};
@@ -58,7 +57,7 @@ handle_request(
     };
 
     // Returns a server error response
-    auto const server_error =
+    const auto server_error =
     [&req](boost::beast::string_view what)
     {
         http::response<http::string_body> res{http::status::internal_server_error, req.version()};

@@ -81,8 +81,13 @@ int main(int argc, char* argv[])
         ioc.stop();
     });
 
-  // TODO: verify this bind is sucessful or die
-  std::make_shared<listener>(ioc, tcp::endpoint{opt.address, opt.port}, opt.doc_root)->run();
+  auto sp = std::make_shared<listener>(ioc, tcp::endpoint{opt.address, opt.port}, opt.doc_root);
+  if(sp->alive()) {
+    sp->run();
+  } else {
+    ioc.stop();
+    die("Unable to initialize listener. exiting.");
+  }
 
   std::vector<std::thread> workers;
     workers.reserve(opt.pool_size - 1);

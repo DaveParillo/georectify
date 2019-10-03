@@ -1,10 +1,10 @@
-#include <boost/asio/bind_executor.hpp>
-#include <boost/asio/ip/tcp.hpp>
-#include <boost/system/error_code.hpp>
-
 #include <memory>
 #include <string>
 #include <utility>
+
+#include <boost/asio/bind_executor.hpp>
+#include <boost/asio/ip/tcp.hpp>
+#include <boost/system/error_code.hpp>
 
 #include "listener.h"
 #include "session.h"
@@ -49,9 +49,8 @@ listener::listener(
     fail(ec, "listen");
     return;
   }
+  alive_ = true;
 }
-
-
 
 #include <boost/asio/yield.hpp>
 void

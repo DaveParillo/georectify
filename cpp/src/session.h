@@ -28,12 +28,12 @@ class session
     // Take ownership of the socket
     explicit
       session(tcp::socket socket,
-          const std::shared_ptr<const std::string>& doc_root)
-      : socket_(std::move(socket))
+              const std::shared_ptr<const std::string>& doc_root)
+        : socket_(std::move(socket))
         , strand_(socket_.get_executor())
         , doc_root_(doc_root)
         , send_(*this)
-    { }
+      { }
 
     // Start the asynchronous operation
     void run() {
